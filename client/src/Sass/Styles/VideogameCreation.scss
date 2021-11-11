@@ -1,0 +1,65 @@
+@import '../Variables/Variables.scss';
+
+.VideogameCreation {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.VideogameCreation .creationForm {
+  max-width: 550px;
+  margin: 0 auto;
+  background-color: #26262680;
+  padding: 5rem;
+  border-radius: 5px;
+  display: flex;
+}
+
+.VideogameCreation .creationForm .inputFields {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10%;
+}
+
+.inputFields,
+.descriptionContainer {
+  width: 48%;
+}
+
+.inputFields .input,
+.descriptionContainer textarea {
+  margin: 10px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid $buttonColor;
+  padding: 10px;
+  color: $headlineColor;
+  width: 100%;
+}
+
+.descriptionContainer textarea {
+  height: 90%;
+}
+
+::-webkit-input-placeholder {
+  font-family: inherit;
+  color: $paragraphColor;
+}
+
+.VideogameCreation select {
+  width: 12rem;
+  margin: 0.33rem;
+  padding: 0.33rem;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: bold;
+  text-align: center;
+  background-color: #262626;
+  color: $buttonText;
+  transition: color 0.5s ease-in-out;
+
+  &:hover {
+    color: #fffffe80;
+  }
+}

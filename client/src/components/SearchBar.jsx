@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchByName } from '../store/actions';
+import '../Sass/Styles/SearchBar.scss';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -17,14 +18,14 @@ export default function SearchBar() {
   }
 
   return (
-    <div>
+    <div className="searchBar">
       <form onSubmit={(element) => submitHandler(element)}>
         <input
           type="text"
           onChange={inputChangeHandler}
-          placeholder="Search for a videogame!"
+          onSubmit={submitHandler}
+          placeholder="🔍 Search for a videogame!"
         />
-        <input type="submit" value="🔍" />
       </form>
     </div>
   );

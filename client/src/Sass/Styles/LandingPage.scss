@@ -1,0 +1,20 @@
+@import '../Variables/Variables.scss';
+
+.landingPage {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.landingPage h1 {
+  color: $headlineColor;
+  font-weight: 300;
+}
+
+.landingPage h2 {
+  color: $headlineColor;
+}
+
+.gamerLandingPage {
+  font-weight: 800;
+}

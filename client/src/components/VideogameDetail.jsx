@@ -1,37 +1,40 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchById, clearDetail } from '../store/actions';
+import { useEffect } from 'react';
+import '../Sass/Styles/VideogameDetail.scss';
 
-export default function VideogameDetail() {
-  const [videogame, setVideogame] = useState(null);
-  let { idVideogame } = useParams();
+export default function VideogameDetail(props) {
+  const dispatch = useDispatch();
+  const videogame = useSelector((state) => state.videogameDetail);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/videogame/' + idVideogame)
-      .then((response) => {
-        setVideogame(response.data);
-      });
+    dispatch(fetchById(props.match.params.id));
+  }, [dispatch]);
 
-    return () => {
-      setVideogame(null);
-    };
-  }, []);
+  function clickHandler(event) {
+    dispatch(clearDetail());
+  }
+
+  console.log(videogame);
 
   return (
     <div>
-      {videogame ? (
-        <>
-          <h3>{videogame.name}</h3>
-          <h4>Release Date: {videogame.releaseDate}</h4>
-          <h4>Rating: {videogame.rating}</h4>
-          <h4>Platforms: {videogame.platforms}</h4>
+      {videogame.name ? (
+        <div className="VideogameDetail">
+          <h1>{videogame.name}</h1>
+          <h5>{videogame.genres.join('-')}</h5>
+          <h5>{videogame.platforms.join(', ')}</h5>
           <img src={videogame.image} alt="imagen" />
-          <h5>{videogame.genres}</h5>
+          <h6>{videogame.rating}</h6>
+          <h6>{videogame.releaseDate}</h6>
           <p>{videogame.description}</p>
-        </>
+          <Link to="/homepage">
+            <button onClick={(event) => clickHandler(event)}>Back!</button>
+          </Link>
+        </div>
       ) : (
-        <div>Loading...</div>
+        <p>Loading...</p>
       )}
     </div>
   );

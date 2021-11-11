@@ -1,3 +1,43 @@
+@import '../Variables/Variables.scss';
+
+body {
+  background-color: $backgroundColor;
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $headlineColor;
+}
+
+p {
+  color: $paragraphColor;
+}
+
+button {
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: bolder;
+  padding: 1rem;
+  background-color: $buttonColor;
+  color: $buttonText;
+  transition: background-color 0.5s ease-in-out;
+
+  &:hover {
+    background-color: $buttonColor-80;
+  }
+}
+
 .App {
   text-align: center;
 }

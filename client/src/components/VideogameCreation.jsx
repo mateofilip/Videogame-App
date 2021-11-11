@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { createVideogame, fetchGenres } from '../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import '../Sass/Styles/VideogameCreation.scss';
 
 let selectGenres = {
   genreOne: '',
@@ -50,6 +51,29 @@ export default function VideogameCreation() {
     let videogame = input;
     videogame.genres = Object.values(selectGenres);
     videogame.platforms = Object.values(selectPlatforms);
+
+    if (!videogame.name) {
+      alert('A name is required!');
+      return;
+    }
+
+    if (!videogame.description) {
+      alert('A description is required!');
+      return;
+    }
+
+    if (!videogame.platforms || videogame.platforms[0] === '') {
+      alert('A platform is required!');
+      return;
+    }
+
+    if (!videogame.genres || videogame.genres[0] === '') {
+      alert('A genre is required!');
+      return;
+    }
+
+    if (!videogame.rating) videogame.rating = 0;
+
     dispatch(createVideogame(videogame));
     alert('Videogame created!');
     setInput({
@@ -69,68 +93,47 @@ export default function VideogameCreation() {
   }, []);
 
   return (
-    <div>
-      <Link to="/homepage">
-        <button>Get back!</button>
-      </Link>
-
-      <form>
-        <div>
-          <label>Name:</label>
+    <div className="VideogameCreation">
+      <form className="creationForm">
+        <div className="inputFields">
           <input
             type="text"
             value={input.name}
             name="name"
             onChange={(event) => changeHandler(event)}
+            placeholder="Name*"
+            className="input"
           />
-        </div>
 
-        <div>
-          <label>Description:</label>
-          <input
-            type="text"
-            value={input.description}
-            name="description"
-            onChange={(event) => changeHandler(event)}
-          />
-        </div>
-
-        <div>
-          <label>Release Date:</label>
           <input
             type="string"
             value={input.releaseDate}
             name="releaseDate"
             onChange={(event) => changeHandler(event)}
+            placeholder="Release Date"
+            className="input"
           />
-        </div>
 
-        <div>
-          <label>Rating:</label>
           <input
             type="number"
             value={input.rating}
             name="rating"
             onChange={(event) => changeHandler(event)}
+            placeholder="Rating"
+            className="input"
           />
-        </div>
 
-        <div>
-          <label>Platform:</label>
           <select
             name="platformOne"
             onChange={(event) => platformHandler(event)}
           >
-            <option>Select a Platform</option>
+            <option>Select a Platform*</option>
             <option value="PC">PC</option>
             <option value="PlayStation">PlayStation</option>
             <option value="Xbox">Xbox</option>
             <option value="Other">Other</option>
           </select>
-        </div>
 
-        <div>
-          <label>Platform:</label>
           <select
             name="platformTwo"
             onChange={(event) => platformHandler(event)}
@@ -141,34 +144,38 @@ export default function VideogameCreation() {
             <option value="Xbox">Xbox</option>
             <option value="Other">Other</option>
           </select>
-        </div>
 
-        <div>
-          <label>Genre:</label>
           <select name="genreOne" onChange={(event) => genreHandler(event)}>
-            <option>Select a Genre</option>
+            <option>Select a Genre*</option>
             {genres.map((genre) => (
               <option value={genre.name}>{genre.name}</option>
             ))}
           </select>
-        </div>
 
-        <div>
-          <label>Genre:</label>
           <select name="genreTwo" onChange={(event) => genreHandler(event)}>
             <option value="">Select Genres</option>
             {genres.map((genre) => (
               <option value={genre.name}>{genre.name}</option>
             ))}
           </select>
-          <ul>
-            <li>{input.genres.map((genre) => genre + ', ')}</li>
-          </ul>
+        </div>
+
+        <div className="descriptionContainer">
+          <textarea
+            type="text"
+            value={input.description}
+            name="description"
+            onChange={(event) => changeHandler(event)}
+            placeholder="Description*"
+          />
         </div>
       </form>
 
-      <form onSubmit={submitHandler}>
-        <button type="submit">Create Videogame</button>
+      <form className="buttonContainer" onSubmit={submitHandler}>
+        <Link to="/homepage">
+          <button>✖ Get back!</button>
+        </Link>
+        <button type="submit">✔ Create Videogame</button>
       </form>
     </div>
   );

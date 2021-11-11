@@ -1,0 +1,31 @@
+@import '../Variables/Variables.scss';
+
+.Pagination {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.Pagination button {
+  background-color: #26262680;
+  color: $buttonText;
+
+  &:hover {
+    background-color: $buttonColor-80;
+  }
+
+  &:focus {
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: bolder;
+    padding: 1rem;
+    background-color: $buttonColor;
+    color: $buttonText;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover {
+      background-color: $buttonColor-80;
+    }
+  }
+}

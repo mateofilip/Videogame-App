@@ -1,0 +1,28 @@
+@import '../Variables/Variables.scss';
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.searchBar input {
+  background-color: #262626;
+  border: none;
+  border-radius: 25px;
+  text-align: center;
+  color: $secondaryColor;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 20rem;
+  padding-right: 20rem;
+  transition: background-color 0.5s ease-in-out;
+  font-family: inherit;
+  font-size: larger;
+
+  &:hover {
+    color: $strokeColor;
+    background-color: $mainColor;
+  }
+}

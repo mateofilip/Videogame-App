@@ -1,5 +1,6 @@
 import {
   CREATE_VIDEOGAME,
+  FETCH_BY_ID,
   FETCH_BY_NAME,
   FETCH_GENRES,
   FETCH_VIDEOGAMES,
@@ -7,12 +8,14 @@ import {
   FILTER_BY_GENRE,
   SORT_BY_NAME,
   SORT_BY_RATING,
+  CLEAR_DETAIL,
 } from '../actions';
 
 const initialState = {
   videogames: [],
   filteredVideogames: [],
   genres: [],
+  videogameDetail: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -34,6 +37,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         videogames: action.payload,
+      };
+
+    case FETCH_BY_ID:
+      return {
+        ...state,
+        videogameDetail: action.payload,
       };
 
     case CREATE_VIDEOGAME:
@@ -109,6 +118,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         videogames: sortedArrayy,
+      };
+
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        videogameDetail: [],
       };
 
     default:

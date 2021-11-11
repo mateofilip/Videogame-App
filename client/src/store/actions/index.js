@@ -8,6 +8,8 @@ export const SORT_BY_NAME = 'ORDER_BY_NAME';
 export const SORT_BY_RATING = 'SORT_BY_RATING';
 export const FILTER_BY_GENRE = 'FILTER_BY_GENRE';
 export const CREATE_VIDEOGAME = 'CREATE_VIDEOGAME';
+export const FETCH_BY_ID = 'FETCH_BY_ID';
+export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 
 export function fetchVideogames() {
   return async function (dispatch) {
@@ -41,6 +43,23 @@ export function fetchByName(name) {
       return dispatch({
         type: FETCH_BY_NAME,
         payload: jsonNames.data,
+      });
+    } catch (errorMessage) {
+      console.log(errorMessage);
+    }
+  };
+}
+
+export function fetchById(id) {
+  return async function (dispatch) {
+    try {
+      let jsonId = await axios.get('http://localhost:3001/videogame/' + id);
+
+      id.length > 15 ? (jsonId.data = jsonId.data[0]) : (jsonId = jsonId);
+
+      return dispatch({
+        type: FETCH_BY_ID,
+        payload: jsonId.data,
       });
     } catch (errorMessage) {
       console.log(errorMessage);
@@ -87,5 +106,11 @@ export function sortByRating(payload) {
   return {
     type: SORT_BY_RATING,
     payload,
+  };
+}
+
+export function clearDetail() {
+  return {
+    type: CLEAR_DETAIL,
   };
 }

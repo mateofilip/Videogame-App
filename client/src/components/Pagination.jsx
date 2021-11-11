@@ -1,3 +1,5 @@
+import '../Sass/Styles/Pagination.scss';
+
 export default function Pagination({
   videogamesPerPage,
   allVideogames,
@@ -14,16 +16,10 @@ export default function Pagination({
   }
 
   return (
-    <nav>
-      <ul>
-        {pageNumbers?.map((number) => {
-          return (
-            <li key={number}>
-              <a onClick={() => pagination(number)}>{number}</a>;
-            </li>
-          );
-        })}
-      </ul>
+    <nav className="Pagination">
+      {pageNumbers?.map((number) => {
+        return <button onClick={() => pagination(number)}>{number}</button>;
+      })}
     </nav>
   );
 }

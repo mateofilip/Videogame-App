@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import Videogame from './Videogame';
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';
+import '../Sass/Styles/Homepage.scss';
 
 export default function Videogames() {
   const dispatch = useDispatch();
@@ -30,11 +31,6 @@ export default function Videogames() {
   const pagination = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  useEffect(() => {
-    dispatch(fetchVideogames());
-    dispatch(fetchGenres());
-  }, []);
 
   function clickHandler(event) {
     event.preventDefault();
@@ -64,18 +60,26 @@ export default function Videogames() {
   }
 
   return (
-    <div>
-      <h1>VIDEOGAMES</h1>
+    <div className="Homepage">
+      <h1>🎮 Videogames, by Mateo Filip</h1>
       <button
         onClick={(event) => {
           clickHandler(event);
         }}
       >
-        Refresh all Videogames
+        🔁 Refresh
       </button>
-      <Link to="/videogame">Create Videogame</Link>
+      <Link to="/videogame">
+        <button>🔧 Create</button>
+      </Link>
+
+      <SearchBar />
+
       <div>
-        <select onChange={(event) => sortByNameHandler(event)}>
+        <select
+          className="selectsHomepage"
+          onChange={(event) => sortByNameHandler(event)}
+        >
           <option value="" selected>
             Sort by alphabet!
           </option>
@@ -83,7 +87,10 @@ export default function Videogames() {
           <option value="DESCENDING">⬇ Descending</option>
         </select>
 
-        <select onChange={(event) => sortByRatingHandler(event)}>
+        <select
+          className="selectsHomepage"
+          onChange={(event) => sortByRatingHandler(event)}
+        >
           <option value="" selected>
             Sort by rating!
           </option>
@@ -91,7 +98,10 @@ export default function Videogames() {
           <option value="DESCENDING">⬇ Descending</option>
         </select>
 
-        <select onChange={(event) => creationFilterHandler(event)}>
+        <select
+          className="selectsHomepage"
+          onChange={(event) => creationFilterHandler(event)}
+        >
           <option value="All" selected>
             All Videogames
           </option>
@@ -99,7 +109,10 @@ export default function Videogames() {
           <option value="Existing">Existing</option>
         </select>
 
-        <select onChange={(event) => genreFilterHandler(event)}>
+        <select
+          className="selectsHomepage"
+          onChange={(event) => genreFilterHandler(event)}
+        >
           <option value="All" selected>
             All Genres
           </option>
@@ -108,28 +121,28 @@ export default function Videogames() {
           })}
         </select>
 
-        <SearchBar />
+        <div className="cardsContainer">
+          {currentVideogames?.map((videogame) => {
+            return (
+              <section>
+                <Link to={'/videogame/' + videogame.id}>
+                  <Videogame
+                    name={videogame.name}
+                    image={videogame.image}
+                    genres={videogame.genres}
+                    key={videogame.id}
+                  />
+                </Link>
+              </section>
+            );
+          })}
+        </div>
 
         <Pagination
           videogamesPerPage={videogamesPerPage}
           allVideogames={allVideogames.length}
           pagination={pagination}
         />
-
-        {currentVideogames?.map((videogame) => {
-          return (
-            <section>
-              <Link to={'/videogame/' + videogame.id}>
-                <Videogame
-                  name={videogame.name}
-                  image={videogame.image}
-                  genres={videogame.genres}
-                  key={videogame.id}
-                />
-              </Link>
-            </section>
-          );
-        })}
       </div>
     </div>
   );
