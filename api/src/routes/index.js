@@ -70,7 +70,7 @@ router.get('/videogames', async (request, response) => {
       let resultsToReturn = [];
       let rawgApi = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
-      for (let index = 0; index < 1; index++) {
+      for (let index = 0; index < 15; index++) {
         let videogames = (await axios.get(rawgApi)).data;
         let gameInfo = videogames.results.map((videogame) => {
           return {
