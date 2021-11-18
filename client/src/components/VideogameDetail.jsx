@@ -16,7 +16,7 @@ export default function VideogameDetail(props) {
     dispatch(clearDetail());
   }
 
-  console.log(videogame);
+  console.log(videogame.rating);
 
   return (
     <div>
@@ -26,7 +26,7 @@ export default function VideogameDetail(props) {
           <h5>{videogame.genres.join('-')}</h5>
           <h5>{videogame.platforms.join(', ')}</h5>
           <img src={videogame.image} alt="imagen" />
-          <h6>{videogame.rating}</h6>
+          <h6>{videogame.rating}⭐</h6>
           <h6>{videogame.releaseDate}</h6>
           <p>{videogame.description}</p>
           <Link to="/homepage">

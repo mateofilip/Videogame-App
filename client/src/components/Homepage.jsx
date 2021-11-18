@@ -7,6 +7,7 @@ import {
   filterVideogamesByGenre,
   sortByName,
   sortByRating,
+  sortByRating4,
 } from '../store/actions/index';
 import { Link } from 'react-router-dom';
 import Videogame from './Videogame';
@@ -43,6 +44,10 @@ export default function Videogames() {
 
   function genreFilterHandler(event) {
     dispatch(filterVideogamesByGenre(event.target.value));
+  }
+
+  function ratingFilterHandler(event) {
+    dispatch(sortByRating4(event.target.value));
   }
 
   function sortByNameHandler(event) {

@@ -24,6 +24,6 @@ test('renders a videogame refresh button', () => {
       </BrowserRouter>
     </Provider>
   );
-  const refreshButton = screen.getByText('Refresh all Videogames');
+  const refreshButton = screen.getByText('🔁 Refresh');
   expect(refreshButton).toBeInTheDocument();
 });

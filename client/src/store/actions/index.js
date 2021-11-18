@@ -10,6 +10,7 @@ export const FILTER_BY_GENRE = 'FILTER_BY_GENRE';
 export const CREATE_VIDEOGAME = 'CREATE_VIDEOGAME';
 export const FETCH_BY_ID = 'FETCH_BY_ID';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
+export const SORT_BY_RATING_4 = 'SORT_BY_RATING_4';
 
 export function fetchVideogames() {
   return async function (dispatch) {
@@ -57,6 +58,8 @@ export function fetchById(id) {
 
       id.length > 15 ? (jsonId.data = jsonId.data[0]) : (jsonId = jsonId);
 
+      console.log(jsonId);
+
       return dispatch({
         type: FETCH_BY_ID,
         payload: jsonId.data,
@@ -98,6 +101,13 @@ export function filterVideogamesByGenre(payload) {
 export function sortByName(payload) {
   return {
     type: SORT_BY_NAME,
+    payload,
+  };
+}
+
+export function sortByRating4(payload) {
+  return {
+    type: SORT_BY_RATING_4,
     payload,
   };
 }

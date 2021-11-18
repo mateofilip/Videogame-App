@@ -9,6 +9,7 @@ import {
   SORT_BY_NAME,
   SORT_BY_RATING,
   CLEAR_DETAIL,
+  SORT_BY_RATING_4,
 } from '../actions';
 
 const initialState = {
@@ -99,6 +100,17 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         videogames: sortedArray,
+      };
+
+    case SORT_BY_RATING_4:
+      const filteredVideogamesByRating4 = state.filteredVideogames;
+      const ratingFiltered = filteredVideogamesByRating4.filter((videogame) => {
+        return videogame.rating > 4;
+      });
+
+      return {
+        ...state,
+        videogames: ratingFiltered,
       };
 
     case SORT_BY_RATING:
