@@ -102,7 +102,7 @@ router.get('/videogames', async (request, response) => {
       return response.status(200).send(resultsToReturn);
     }
   } catch (error) {
-    console.log(error);
+    response.status(400).send(error);
   }
 });
 
