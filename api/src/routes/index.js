@@ -101,8 +101,8 @@ router.get('/videogames', async (request, response) => {
       resultsToReturn = dbGamesToConcat.concat(resultsToReturn);
       return response.status(200).send(resultsToReturn);
     }
-  } catch {
-    response.status(400).send('Something went wrong! :(');
+  } catch (error) {
+    console.log(error);
   }
 });
 
