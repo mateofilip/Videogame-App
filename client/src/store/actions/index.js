@@ -14,7 +14,7 @@ export const SORT_BY_RATING_4 = 'SORT_BY_RATING_4';
 
 export function fetchVideogames() {
   return async function (dispatch) {
-    let jsonVideogames = await axios.get('http://localhost:3001/videogames');
+    let jsonVideogames = await axios.get('/videogames');
 
     return dispatch({
       type: FETCH_VIDEOGAMES,
@@ -25,7 +25,7 @@ export function fetchVideogames() {
 
 export function fetchGenres() {
   return async function (dispatch) {
-    let jsonGenres = await axios.get('http://localhost:3001/genres');
+    let jsonGenres = await axios.get('/genres');
 
     return dispatch({
       type: FETCH_GENRES,
@@ -37,9 +37,7 @@ export function fetchGenres() {
 export function fetchByName(name) {
   return async function (dispatch) {
     try {
-      let jsonNames = await axios.get(
-        'http://localhost:3001/videogames?name=' + name
-      );
+      let jsonNames = await axios.get('/videogames?name=' + name);
 
       return dispatch({
         type: FETCH_BY_NAME,
@@ -54,7 +52,7 @@ export function fetchByName(name) {
 export function fetchById(id) {
   return async function (dispatch) {
     try {
-      let jsonId = await axios.get('http://localhost:3001/videogame/' + id);
+      let jsonId = await axios.get('/videogame/' + id);
 
       id.length > 15 ? (jsonId.data = jsonId.data[0]) : (jsonId = jsonId);
 
@@ -72,10 +70,7 @@ export function fetchById(id) {
 
 export function createVideogame(payload) {
   return async function (dispatch) {
-    const videogame = await axios.post(
-      'http://localhost:3001/videogame/',
-      payload
-    );
+    const videogame = await axios.post('/videogame/', payload);
 
     return dispatch({
       type: CREATE_VIDEOGAME,
