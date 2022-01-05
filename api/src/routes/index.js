@@ -68,9 +68,9 @@ router.get('/videogames', async (request, response) => {
       }
     } else {
       let resultsToReturn = [];
-      let rawgApi = `https://api.rawg.io/api/games?key=${API_KEY}`;
+      let rawgApi = `https://api.rawg.io/api/games?key=${API_KEY}&page_size=33`;
 
-      for (let index = 0; index < 5; index++) {
+      for (let index = 0; index < 3; index++) {
         let videogames = (await axios.get(rawgApi)).data;
         let gameInfo = videogames.results.map((videogame) => {
           return {
@@ -147,8 +147,6 @@ router.get('/videogame/:idVideogame', async (request, response) => {
         platforms: videogame.platforms.map((plat) => plat.platform.name),
       };
     }
-
-    console.log(gameToReturn);
 
     return response.status(200).send(gameToReturn);
   } catch {
