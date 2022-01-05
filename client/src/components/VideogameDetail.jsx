@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { BsStar } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchById, clearDetail } from '../store/actions';
 import { useEffect } from 'react';
@@ -26,7 +27,10 @@ export default function VideogameDetail(props) {
           <h5>{videogame.genres.join('-')}</h5>
           <h5>{videogame.platforms.join(', ')}</h5>
           <img src={videogame.image} alt="imagen" />
-          <h6>{videogame.rating}⭐</h6>
+          <h6 className="calification">
+            {videogame.rating}
+            <BsStar />
+          </h6>
           <h6>{videogame.releaseDate}</h6>
           <p>{videogame.description}</p>
           <Link to="/homepage">

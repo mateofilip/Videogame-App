@@ -2,6 +2,17 @@
 
 .VideogameDetail {
   margin: 5rem;
+
+  .calification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+
+    svg {
+      margin-left: 0.5rem;
+    }
+  }
 }
 
 .VideogameDetail img {

@@ -6,6 +6,21 @@
   place-items: center;
 }
 
+.landingContainer {
+  display: grid;
+  place-items: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
 .landingPage h1 {
   color: $headlineColor;
   font-weight: 300;
@@ -13,6 +28,14 @@
 
 .landingPage h2 {
   color: $headlineColor;
+}
+
+.landingPage {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .gamerLandingPage {

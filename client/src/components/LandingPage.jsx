@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../Sass/Styles/LandingPage.scss';
+import { BsFillCaretRightFill } from 'react-icons/bs';
 
 export default function LandingPage() {
   return (
@@ -10,7 +11,9 @@ export default function LandingPage() {
         </h1>
 
         <Link to="/homepage">
-          <button>▶ Press Start</button>
+          <button>
+            <BsFillCaretRightFill /> Press Start
+          </button>
         </Link>
       </div>
     </div>

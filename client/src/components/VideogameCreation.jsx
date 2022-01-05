@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { BsCheckCircle, BsXCircle } from 'react-icons/bs';
 import { createVideogame, fetchGenres } from '../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Sass/Styles/VideogameCreation.scss';
@@ -173,9 +174,13 @@ export default function VideogameCreation() {
 
       <form className="buttonContainer" onSubmit={submitHandler}>
         <Link to="/homepage">
-          <button>✖ Get back!</button>
+          <button>
+            <BsXCircle /> Get back!
+          </button>
         </Link>
-        <button type="submit">✔ Create Videogame</button>
+        <button type="submit">
+          <BsCheckCircle /> Create Videogame
+        </button>
       </form>
     </div>
   );

@@ -1,5 +1,9 @@
 @import '../Variables/Variables.scss';
 
+:root {
+  font-family: 'Inter', sans-serif;
+}
+
 body {
   background-color: $backgroundColor;
   font-family: 'Inter', sans-serif;
@@ -35,6 +39,7 @@ button {
 
   &:hover {
     background-color: $buttonColor-80;
+    cursor: pointer;
   }
 }
 

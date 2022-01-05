@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { BsController, BsBootstrapReboot, BsTools } from 'react-icons/bs';
 import {
-  fetchGenres,
   fetchVideogames,
   filterVideogamesByCreation,
   filterVideogamesByGenre,
@@ -66,17 +66,24 @@ export default function Videogames() {
 
   return (
     <div className="Homepage">
-      <h1>🎮 Videogames, by Mateo Filip</h1>
-      <button
-        onClick={(event) => {
-          clickHandler(event);
-        }}
-      >
-        🔁 Refresh
-      </button>
-      <Link to="/videogame">
-        <button>🔧 Create</button>
-      </Link>
+      <h1>
+        <BsController /> Videogame App - Mateo Filip
+      </h1>
+
+      <div className="buttons">
+        <button
+          onClick={(event) => {
+            clickHandler(event);
+          }}
+        >
+          <BsBootstrapReboot /> Refresh
+        </button>
+        <Link to="/videogame">
+          <button>
+            <BsTools /> Create
+          </button>
+        </Link>
+      </div>
 
       <SearchBar />
 

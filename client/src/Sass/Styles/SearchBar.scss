@@ -25,4 +25,10 @@
     color: $strokeColor;
     background-color: $mainColor;
   }
+
+  &:focus {
+    color: $strokeColor;
+    background-color: $mainColor;
+    outline: none;
+  }
 }

@@ -63,3 +63,18 @@
     color: #fffffe80;
   }
 }
+
+.buttonContainer {
+  display: flex;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 0.5rem;
+      font-size: 1.25em;
+    }
+  }
+}
